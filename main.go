@@ -22,6 +22,22 @@ type Author struct {
 
 var books []Book
 
+type Car struct {
+	ID     string  `json:"id"`
+	Brand  string  `json:"brand"`
+	Model  string  `json:"model"`
+	Engine *Engine `json:"engine"`
+}
+
+type Engine struct {
+	Name      string `json:"name"`
+	PowerHP   int    `json:"power_hp"`
+	FuelType  string `json:"fuel_type"`
+	DisplLtrs string `json:"displ_liters"`
+}
+
+var cars []Car
+
 func getBooks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(books)
