@@ -97,6 +97,28 @@ func main() {
 	r := mux.NewRouter()
 	books = append(books, Book{ID: "1", Title: "Денискины рассказы", Author: &Author{Firstname: "Виктор", Lastname: "Драгунский"}})
 	books = append(books, Book{ID: "2", Title: "Маленький принц", Author: &Author{Firstname: "Антуан", Lastname: "де Сент-Экзюпери"}})
+	cars = append(cars, Car{
+		ID:    "1",
+		Brand: "Ford",
+		Model: "Focus",
+		Engine: &Engine{
+			Name:      "Duratec",
+			PowerHP:   125,
+			FuelType:  "gasoline",
+			DisplLtrs: "1.6",
+		},
+	})
+	cars = append(cars, Car{
+		ID:    "2",
+		Brand: "Mitsubishi",
+		Model: "Lancer",
+		Engine: &Engine{
+			Name:      "4B11 MIVEC",
+			PowerHP:   150,
+			FuelType:  "gasoline",
+			DisplLtrs: "2.0",
+		},
+	})
 	r.HandleFunc("/books", getBooks).Methods("GET")
 	r.HandleFunc("/books/{id}", getBook).Methods("GET")
 	r.HandleFunc("/books", createBook).Methods("POST")
